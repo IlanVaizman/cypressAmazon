@@ -5,11 +5,12 @@ const navbar = new navbarPage();
 const customerServicePage = new customerService();
 
 
-describe('template spec', () => {
-  it('passes', () => {
+describe('navbar search', () => {
+  it(`customer service (Where's My Stuff?)`, () => {
     cy.visit('https://www.amazon.com/')
-    navbar.validateNavBar()
+    navbar.validateSecondaryNavBar()
     navbar.clickOnCustomerService()
     customerServicePage.search('where is my stuff')
+    customerServicePage.clickOnTopicLink(`Where's My Stuff?`)
   })
 })
