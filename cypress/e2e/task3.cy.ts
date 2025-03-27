@@ -20,9 +20,16 @@ describe('navbar search', () => {
     login.login('puresoul22703@gmail.com', 's6w?bV%:WMyRA4m')
     navbar.searchForItem(firstItemDescription)
     items.clickOnProduct(firstItemDescription.slice(firstItemDescription.indexOf(' ') + 1)) // Removes the first word
-    item.clickOnAddToCartButton()
-    item.validateCartSuccessMsg()
+    item.addtoCart()
     cartNav.validateItemInCart(firstItemDescription)
 
+    cy.visit('https://www.amazon.com/Scissors-iBayam-Crafting-Scrapbooking-Knitting/dp/B07H3QKN2Z')
+    item.selectItemColor('Red, Black, Blue')
+    item.validateItemColor('Red, Black, Blue')
+    item.getItemDescription().then((description) => {
+      cy.log('Item Description:', description);
+      item.addtoCart()
+      cartNav.validateItemInCart(description)
+    })
   })
 })
