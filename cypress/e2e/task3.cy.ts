@@ -34,26 +34,20 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  cy.login();
-  cy.visit('')
-  cartNav.deleteallItemsInCart()
+  cartNav.deleteAllItemsInCart()
 })
-
 
 const additemsAmount: number = 3
 
 describe('cart navbar', () => {
   it(`qualify for free shipping`, () => {
     cartNav.validateFreeShipping(false)
-
     navbar.searchForItem(firstItemDescription)
     items.clickOnProduct(firstItemDescription.slice(firstItemDescription.indexOf(' ') + 1))
-    
     for (let i = 0; i < additemsAmount; i++) {
       item.addtoCart()
       cy.go('back')
     }
-
     cartNav.validateFreeShipping(true)
   })
 })
