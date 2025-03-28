@@ -7,6 +7,19 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
+
+import { loginPage } from "../pages/loginPage";
+import { navbarPage } from "../pages/navbarPage";
+
+// Extend Cypress Chainable interface to include the 'login' command
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      login(): Chainable<void>;
+    }
+  }
+}
+
 //
 //
 // -- This is a parent command --
@@ -23,3 +36,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', () => {
+const login = new loginPage();
+const navbar = new navbarPage();
+
+  cy.session([], () => {
+    cy.visit('')
+    navbar.clickOnSignIn()
+    login.login('puresoul22703@gmail.com', 's6w?bV%:WMyRA4m');
+  })
+})

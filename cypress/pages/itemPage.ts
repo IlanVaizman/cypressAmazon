@@ -28,7 +28,7 @@ export class itemPage {
 
   selectItemColor(color : string): void {
     this.elements.itemColors(color).click();
-    cy.wait(1000);
+    cy.wait(3000);
   }
 
   validateItemColor(color: string): void {
