@@ -3,6 +3,7 @@ export class navbarPage {
     elements = {
         signInBtn: () => cy.get('#nav-link-accountList'),
         searchBar: () => cy.get('#twotabsearchtextbox'),
+        countryLocationAlertDissmiss: () => cy.get(`[role='alertdialog'] [type='submit']`).eq(0),
 
         allBtn: () => cy.get('#nav-hamburger-menu'),  
         todaysDealsBtn: () => cy.get('[data-csa-c-content-id="nav_cs_gb"]'),
@@ -11,6 +12,10 @@ export class navbarPage {
         giftCardsBtn: () => cy.get('[data-csa-c-content-id="nav_cs_gc"]'),
         sellBtn: () => cy.get('[data-csa-c-content-id="nav_cs_sell"]')
    }
+
+   dissmissCountryLocationAlert(): void {
+        this.elements.countryLocationAlertDissmiss().should('be.visible').and('not.be.disabled').click()
+    }
 
     clickOnSignIn(): void {
        this.elements.signInBtn().click()

@@ -8,6 +8,7 @@ const customerServicePage = new customerService();
 describe('navbar search', () => {
   it(`customer service (Where's My Stuff?)`, () => {
     cy.visit('')
+    navbar.dissmissCountryLocationAlert()
     navbar.validateSecondaryNavBar()
     navbar.clickOnCustomerService()
     customerServicePage.search('where is my stuff')
