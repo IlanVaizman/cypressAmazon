@@ -27,8 +27,9 @@ export class itemPage {
 
 
   selectItemColor(color : string): void {
+    cy.intercept('POST', '/dram/renderLazyLoaded').as('colorChangeRequest');
     this.elements.itemColors(color).click();
-    cy.wait(3000);
+    cy.wait('@colorChangeRequest');
   }
 
   validateItemColor(color: string): void {

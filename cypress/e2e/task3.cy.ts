@@ -11,7 +11,9 @@ const item = new itemPage();
 const cartNav = new cartNavbar();
 
 const firstItemDescription: string = 'Bostitch Office Personal Electric Pencil Sharpener, Powerful Stall-Free Motor, High Capacity Shavings Tray, Gray (EPS4-KTGRAY)'
-const firstItemTitle: string = firstItemDescription.slice(firstItemDescription.indexOf(' ') + 1)
+const firstItemTitle: string = firstItemDescription.slice(firstItemDescription.indexOf(' ') + 1) // Remove the first word from the description
+const secoundItemLink: string = 'Scissors-iBayam-Crafting-Scrapbooking-Knitting/dp/B07H3QKN2Z'
+const color: string = 'Red, Black, Blue'
 const additemsAmount: number = 3
 
 beforeEach(() => {
@@ -24,9 +26,9 @@ beforeEach(() => {
     cartNav.validateItemsInCart(1)
     cartNav.validateItemInCart(firstItemDescription)
 
-    cy.visit('Scissors-iBayam-Crafting-Scrapbooking-Knitting/dp/B07H3QKN2Z')
-    item.selectItemColor('Red, Black, Blue')
-    item.validateItemColor('Red, Black, Blue')
+    cy.visit(secoundItemLink)
+    item.selectItemColor(color)
+    item.validateItemColor(color)
     item.getItemDescription().then((description) => {
       cy.log('Item Description:', description);
       item.addtoCart()
