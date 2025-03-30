@@ -5,7 +5,6 @@ import { itemPage } from "../pages/itemPage";
 import { cartNavbar } from "../pages/cartNavbar";
 
 const navbar = new navbarPage();
-const login = new loginPage();
 const items = new itemsPage();
 const item = new itemPage();
 const cartNav = new cartNavbar();
